@@ -8,7 +8,7 @@ module.exports = function (config) {
     return {
         dir: {
             input: './src',
-            output: './build',
+            output: './_site',
             includes: '_includes',
             data: '_data',
             images: './images'
