@@ -31,5 +31,3 @@ jobs:
         with:
           publish_dir: ./_site
           github_token: ${{ secrets.GITHUB_TOKEN }}
-        run:
-          npm run deploy
