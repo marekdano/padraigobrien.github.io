@@ -9,6 +9,8 @@ module.exports = function (config) {
     config.addPlugin(readerBar)
     config.addPassthroughCopy("./src/css/style.css");
     config.addPassthroughCopy("./src/images");
+    config.addPassthroughCopy("./src/CNAME");
+
 
     const mapping = {
         h1: ['text-4xl', 'text-black-400', 'font-bold'],
