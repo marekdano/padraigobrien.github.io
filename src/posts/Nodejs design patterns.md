@@ -1,7 +1,11 @@
 ---
-title: Nodejs design patterns
 layout: layout.njk
-tags: book
+tags: posts
+category: Nodejs
+title: Book review of Nodejs design patterns
+subtitle: A review of a book that promiises to teach you how to implement a series of best practices and design patterns to create efficient and robust Node.js applications.
+date: 2020-10-15
+postDate: Oct-2020
 ---
 # 1. Purpose and target of the book
 Who is this book targeting, who is this book good for?

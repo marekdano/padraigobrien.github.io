@@ -1,0 +1,23 @@
+@tailwind base;
+
+.change {
+  color: transparent;
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+.front-page-container-search {
+  position:absolute;
+  left: 50px;
+  right:50px;
+width: 200px;
+color: white;
+text-align: center;
+top: 75px;
+background-color: rgba(0, 0, 0, 0.6);
+border: 1px solid black;
+opacity: 1;
+margin: 0 auto;
+}
