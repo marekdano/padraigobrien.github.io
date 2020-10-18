@@ -2,6 +2,11 @@
 title: Blogging about learning about frontmatter
 layout: layout.njk
 ---
+<div class="bg-red-100 border border-red-400 text-red-700 text-center px-4 py-3 rounded relative" role="alert">
+  <strong class="font-bold">&lt;Woops&gt;</strong>
+  <span class="block sm:inline">Im currently migrating my old blog to my new blog, none of the posts are available right now.</span>
+  <strong class="font-bold">&lt;&#47;Woops&gt</strong>
+</div>
 {% assign posts = collections.posts | reverse %}
 
 {%- for post in collections.posts -%}
