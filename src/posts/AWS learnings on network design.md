@@ -1,9 +1,16 @@
 ---
 layout: layout.njk
 tags: posts
-category: AWS
-title: Designing a implementing a AWS network
-subtitle: building out a 3 tier network on AWS , design docs and terraform 
-date: 2020-08-01
+category: Hiring
+title: Remote Hiring
+subtitle: Create an environment that maximises your success
+date: 2020-12-07
 postDate: Aug-2020
 ---
+I recently did a post on linkedin that i had to remove, looking back i could have chosen my words better. my intent is still the same , anything that is in your power to improve you should. 
+
+And your environment is one of those.
+
+Audio Settings
+Video Settings
+Lighting
