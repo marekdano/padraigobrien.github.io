@@ -14,3 +14,10 @@ And your environment is one of those.
 Audio Settings
 Video Settings
 Lighting
+
+CV reviews,
+be succint in 
+keep it relevant
+one pager if you are a graduate
+when writing text, ask the question, what is the hiring manager going to get out of this.
+
