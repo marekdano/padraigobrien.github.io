@@ -12,10 +12,12 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setQuietMode(true)
 
+  pathPrefix: "/padraigobrien.com/"
   eleventyConfig.addPassthroughCopy('robots.txt')
   eleventyConfig.addPassthroughCopy('favicon.ico')
   eleventyConfig.addPassthroughCopy('./src/assets/js')
   eleventyConfig.addPassthroughCopy('./src/images/icons')
+  eleventyConfig.addPassthroughCopy("./src/CNAME");
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy")
