@@ -1,52 +1,182 @@
-const readerBar = require('eleventy-plugin-reader-bar')
-const htmlmin = require("html-minifier")
-const markdownIt = require('markdown-it')
-const markdownItClass = require('@toycode/markdown-it-class')
+const { DateTime } = require('luxon')
+const htmlmin = require('html-minifier')
+const ofotigrid = require('./src/_includes/ofotigrid.js')
+const ErrorOverlay = require('eleventy-plugin-error-overlay')
+const path = require ('path')
+const Image = require('@11ty/eleventy-img')
 
+module.exports = function(eleventyConfig) {
 
-module.exports = function (config) {
-    pathPrefix: "/padraigobrien.com/"
-    config.addPlugin(readerBar)
-    config.addPassthroughCopy("./src/css/style.css");
-    config.addPassthroughCopy("./src/images");
-    config.addPassthroughCopy("./src/CNAME");
+  // theming -- based on Reuben Lillie's code (https://gitlab.com/reubenlillie/reubenlillie.com/)
+  ofotigrid(eleventyConfig)
 
+  eleventyConfig.setQuietMode(true)
 
-    const mapping = {
-        h1: ['text-4xl', 'text-black-400', 'font-bold'],
-        a: ['inline-block', 'border', 'border-blue-500', 'rounded', 'py-2', 'px-4', 'bg-blue-500', 'hover:bg-blue-700', 'text-white'],
-        li: ['list-disc'],
-      };
-    
-      const md = markdownIt({ linkify: true, html: true });
-      md.use(markdownItClass, mapping);
-      config.setLibrary('md', md);
+  eleventyConfig.addPassthroughCopy('robots.txt')
+  eleventyConfig.addPassthroughCopy('favicon.ico')
+  eleventyConfig.addPassthroughCopy('./src/assets/js')
+  eleventyConfig.addPassthroughCopy('./src/images/icons')
 
-      config.addTransform("htmlmin", function (content, outputPath) {
-        if (
-          process.env.ELEVENTY_PRODUCTION &&
-          outputPath &&
-          outputPath.endsWith(".html")
-        ) {
-          let minified = htmlmin.minify(content, {
-            useShortDoctype: true,
-            removeComments: true,
-            collapseWhitespace: true,
-          });
-          return minified
-        }
-    
-        return content
-      });
+  eleventyConfig.addFilter("readableDate", dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy")
+  })
 
-      
-    return {
-        dir: {
-            input: './src',
-            output: './_site',
-            includes: '_includes',
-            data: '_data',
-            images: './images'
-        }
+  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+  eleventyConfig.addFilter('htmlDateString', dateObj => {
+    return DateTime.fromJSDate(dateObj).toFormat('MMMM d, yyyy')
+  })
+
+  eleventyConfig.addFilter('dateStringISO', dateObj => {
+    return DateTime.fromJSDate(dateObj).toFormat('yyyy-MM-dd')
+  })
+
+  eleventyConfig.addFilter('dateFromTimestamp', timestamp => {
+    return DateTime.fromISO(timestamp, { zone: 'utc' }).toJSDate()
+  })
+
+  eleventyConfig.addFilter('dateFromRFC2822', timestamp => {
+    return DateTime.fromJSDate(timestamp).toISO()
+  })
+
+  eleventyConfig.addFilter('readableDateFromISO', dateObj => {
+    return DateTime.fromISO(dateObj).toFormat('LLL d, yyyy h:mm:ss a ZZZZ')
+  })
+
+  eleventyConfig.addFilter('pub_lastmod', dateObj => {
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('MMMM d, yyyy')
+  })
+
+  // https://www.11ty.dev/docs/layouts/
+  eleventyConfig.addLayoutAlias("base", "layouts/_default/base.11ty.js")
+  eleventyConfig.addLayoutAlias("singlepost", "layouts/posts/singlepost.11ty.js")
+  eleventyConfig.addLayoutAlias("index", "layouts/_default/index.11ty.js")
+
+  /* Markdown plugins */
+  // https://www.11ty.dev/docs/languages/markdown/
+  // --and-- https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js
+  // --and-- https://github.com/planetoftheweb/seven/blob/master/.eleventy.js
+  let markdownIt = require("markdown-it")
+  let markdownItFootnote = require("markdown-it-footnote")
+  let markdownItPrism = require('markdown-it-prism')
+  let markdownItBrakSpans = require('markdown-it-bracketed-spans')
+  let markdownItLinkAttrs = require('markdown-it-link-attributes')
+  let markdownItOpts = {
+    html: true,
+    linkify: false,
+    typographer: true
+  }
+  const markdownEngine = markdownIt(markdownItOpts)
+  markdownEngine.use(markdownItFootnote)
+  markdownEngine.use(markdownItPrism)
+  markdownEngine.use(markdownItBrakSpans)
+  markdownEngine.use(markdownItLinkAttrs, {
+    pattern: /^https:/,
+    attrs: {
+      target: '_blank',
+      rel: 'noreferrer noopener'
     }
+  })
+  // START, de-bracketing footnotes
+  //--- see http://dirtystylus.com/2020/06/15/eleventy-markdown-and-footnotes/
+  markdownEngine.renderer.rules.footnote_caption = (tokens, idx) => {
+    let n = Number(tokens[idx].meta.id + 1).toString()
+    if (tokens[idx].meta.subId > 0) {
+      n += ":" + tokens[idx].meta.subId
+    }
+    return n
+  }
+  // END, de-bracketing footnotes
+  eleventyConfig.setLibrary("md", markdownEngine)
+
+  eleventyConfig.addWatchTarget("src/**/*.js")
+  eleventyConfig.addWatchTarget("./src/assets/css/*.css")
+  eleventyConfig.addWatchTarget("./src/**/*.md")
+
+  eleventyConfig.setBrowserSyncConfig({
+    ...eleventyConfig.browserSyncConfig,
+    files: [
+      "src/**/*.js",
+      "src/assets/css/*.css",
+      "src/**/*.md",
+    ],
+    ghostMode: false,
+    port: 3000,
+  })
+
+  eleventyConfig.addPlugin(ErrorOverlay)
+  
+  // --- START, eleventy-img
+  function imageShortcode(src, alt, sizes="(min-width: 1024px) 100vw, 50vw") {
+    console.log(`Generating image(s) from:  ${src}`)
+    let options = {
+      widths: [600, 900, 1500],
+      formats: ["webp", "jpeg"],
+      urlPath: "/images/",
+      outputDir: "./_site/images/",
+      filenameFormat: function (id, src, width, format, options) {
+        const extension = path.extname(src)
+        const name = path.basename(src, extension)
+        return `${name}-${width}w.${format}`
+      }
+    }
+  
+    // generate images
+    Image(src, options)
+  
+    let imageAttributes = {
+      alt,
+      sizes,
+      loading: "lazy",
+      decoding: "async",
+    }
+    // get metadata
+    metadata = Image.statsSync(src, options)
+    return Image.generateHTML(metadata, imageAttributes)
+  }
+  eleventyConfig.addShortcode("image", imageShortcode)
+  // --- END, eleventy-img
+
+  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+    if( outputPath.endsWith(".html") ) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true
+      })
+      return minified
+    }
+    return content
+  })
+
+  /* === START, prev/next posts stuff === */
+  // https://github.com/11ty/eleventy/issues/529#issuecomment-568257426
+
+  eleventyConfig.addCollection("posts", function(collection) {
+    const coll = collection.getFilteredByTag("post")
+    for(let i = 0; i < coll.length; i++) {
+      const prevPost = coll[i-1]
+      const nextPost = coll[i+1]
+      coll[i].data["prevPost"] = prevPost
+      coll[i].data["nextPost"] = nextPost
+    }
+    return coll
+  })
+
+  /* === END, prev/next posts stuff === */
+  
+  /* pathPrefix: "/"; */
+  return {
+    dir: {
+      input: 'src', // <--- everything else in 'dir' is relative to this directory! https://www.11ty.dev/docs/config/#directory-for-includes
+      data: '../_data',
+      includes: '_includes'
+    },
+    templateFormats: [
+      'html',
+      'md',
+      'njk',
+      '11ty.js'
+    ],
+    passthroughFileCopy: true,
+  }
 }

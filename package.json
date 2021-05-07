@@ -1,32 +1,49 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
+  "name": "padraigobrien.com",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "eleventy --serve",
-    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss ./src/styles/tailwind.css --o _site/style.css",
-    "deploy": "gh-pages -d ./_site"
+    "clean": "rimraf _site src/_includes/css",
+    "start": "NODE_ENV=development npm-run-all clean --parallel dev:*",
+    "build": "NODE_ENV=production npm-run-all clean postcss-build --parallel prod:*",
+    "testbuild": "NODE_ENV=production npm-run-all clean postcss-build --parallel testProd:*",
+    "postcss-build": "postcss src/assets/css/index.css -o src/_includes/css/index.css --config ./postcss.config.js",
+    "dev:postcss": "postcss src/assets/css/index.css -o _site/css/index.css --config ./postcss.config.js -w",
+    "dev:eleventy": "ELEVENTY_ENV=development npx @11ty/eleventy --quiet --serve",
+    "prod:postcss": "postcss src/assets/css/index.css -o src/_includes/css/index.css --config ./postcss.config.js",
+    "prod:eleventy": "ELEVENTY_ENV=production npx @11ty/eleventy --output=./_site",
+    "testProd:postcss": "postcss src/assets/css/index.css -o src/_includes/css/index.css --config ./postcss.config.js -w",
+    "testProd:eleventy": "ELEVENTY_ENV=production npx @11ty/eleventy --output=./_site --quiet --serve"
   },
-  "homepage": "/padraigobrien.com",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "browserslist": [
+    "last 4 versions",
+    "> 1%",
+    "maintained node versions"
+  ],
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
-    "gh-pages": "^3.1.0",
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-img": "^0.8.3",
+    "autoprefixer": "^10.2.5",
+    "eleventy-plugin-error-overlay": "^0.1.2",
+    "glob": "^7.1.7",
+    "glob-all": "^3.2.1",
     "html-minifier": "^4.0.0",
-    "postcss-clean": "^1.1.0",
-    "postcss-cli": "^8.1.0",
-    "tailwindcss": "^1.9.2"
-  },
-  "dependencies": {
-    "eleventy-plugin-reader-bar": "^0.2.0",
-    "markdown-it-emoji": "^1.4.0",
-    "@toycode/markdown-it-class": "^1.2.4",
-    "markdown-it": "^12.0.0",
-    "postcss-cli": "^8.1.0",
-    "tailwindcss": "^1.9.2"
+    "luxon": "^1.26.0",
+    "markdown-it": "^12.0.6",
+    "markdown-it-bracketed-spans": "^1.0.1",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-link-attributes": "^3.0.0",
+    "markdown-it-prism": "^2.1.6",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.14",
+    "postcss-cli": "^8.3.1",
+    "postcss-csso": "^5.0.1",
+    "postcss-import": "^14.0.1",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^2.1.2"
   }
 }
