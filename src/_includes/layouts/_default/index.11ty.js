@@ -15,8 +15,8 @@ exports.render = function (data) {
   <main class="p-0">
     <div class="pt-6 lg:pt-12 lg:flex w-full mr-auto ml-auto">
       <div class="bg-transparent lg:w-5/12 px-8 lg:pl-16 lg:pr-16 pt-16 lg:text-white text-center lg:text-right">
-        <h1 class="lg:leading-normal text-3xl lg:text-4xl 2xl:text-6xl lg:pt-10">Home page</h1>
-        <p class="font-sans">This sentence comes from the template.</p>
+        <h1 class="lg:leading-normal text-3xl lg:text-4xl 2xl:text-6xl lg:pt-10">Welcome</h1>
+        <p class="font-sans"> My opinions on technology and management.</p>
         <div class="font-sans">${content}</div>
       </div>
       <div class="text-center lg:text-left lg:w-7/12 lg:pl-16 lg:pt-16">
