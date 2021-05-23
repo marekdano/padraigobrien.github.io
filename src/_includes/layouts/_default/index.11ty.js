@@ -14,8 +14,8 @@ exports.render = function (data) {
   return /*html*/ `
   <main class="p-0">
     <div class="pt-6 lg:pt-12 lg:flex w-full mr-auto ml-auto">
-      <div class="bg-transparent lg:w-5/12 px-8 lg:pl-16 lg:pr-16 pt-16 lg:text-white text-center lg:text-right">
-        <h1 class="lg:leading-normal text-3xl lg:text-4xl 2xl:text-6xl lg:pt-10">Welcome</h1>
+      <div class="bg-transparent lg:w-5/12 px-8 lg:pl-16 lg:pr-16 pt-0 lg:text-white text-center lg:text-right">
+        <h1 class="lg:leading-normal text-3xl lg:text-4xl 2xl:text-6xl lg:pt-16">Welcome</h1>
         <p class="font-sans"> My opinions on technology and management.</p>
         <div class="font-sans">${content}</div>
       </div>

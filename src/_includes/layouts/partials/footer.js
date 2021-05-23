@@ -39,7 +39,7 @@ module.exports = function (eleventyConfig) {
                       type="submit"
                       class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-grey-500 hover:bg-grey-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-grey-500"
                     >
-                      Notify me
+                      Join me
                     </button>
                   </div>
                 </accept-charset=>
