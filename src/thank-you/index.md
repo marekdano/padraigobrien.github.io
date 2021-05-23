@@ -17,7 +17,7 @@ featured_image_caption: "Image: Dalamo; Pixabay"
 
 # What to expect
 
-I will be send out preiodic emails on what i have been researching in relation to starting my own indie business and the results of the experiments i carried out.
+I will be sending out preiodic emails on what i have been researching in relation to starting my own indie business and the results of the experiments i carried out.
 
 ## Hulacorn
 
