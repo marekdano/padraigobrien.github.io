@@ -31,5 +31,7 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [], // if we add forms, do it here
+  plugins: [
+    require('@tailwindcss/forms'),
+  ], // if we add forms, do it here
 }

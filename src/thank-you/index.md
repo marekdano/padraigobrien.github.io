@@ -1,11 +1,11 @@
 ---
 layout: singlepost
-title: "The About Me page"
+title: "Thank you"
 # Change the title setting for this in /src/_includes/layouts/posts/singlepostherofit.11ty.js
 # to keep the "Other posts" box from appearing at the bottom of this page, since it uses 
 # the same layout as posts.
 subtitle: "Constantly experimenting with new ways to fail"
-description: "I like to have fun with techonlogy, mainly Javascript, starting on Rust. I aspire to run my own business, I have come to shy away from the venture capital way of creating and growing companies. I have failed a lot at all these things."
+description: "Thanks for joining me on my journey, i promise that it will be full of insights and fun"
 author: Padraig O'Brien
 date: 2020-09-14T15:00:00
 lastmod: 2020-05-22T19:30:00
@@ -15,6 +15,9 @@ featured_image_alt: Stylistic image of question mark superimposed over computer 
 featured_image_caption: "Image: Dalamo; Pixabay"
 ---
 
+# What to expect
+
+I will be send out preiodic emails on what i have been researching in relation to starting my own indie business and the results of the experiments i carried out.
 
 ## Hulacorn
 

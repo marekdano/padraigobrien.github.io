@@ -4,13 +4,27 @@ const ofotigrid = require('./src/_includes/ofotigrid.js')
 const ErrorOverlay = require('eleventy-plugin-error-overlay')
 const path = require ('path')
 const Image = require('@11ty/eleventy-img')
+const codeblocks = require('@code-blocks/eleventy-plugin')
+const charts = require('@code-blocks/charts')
 
 module.exports = function(eleventyConfig) {
-
   // theming -- based on Reuben Lillie's code (https://gitlab.com/reubenlillie/reubenlillie.com/)
   ofotigrid(eleventyConfig)
 
+  eleventyConfig.addJavaScriptFunction("subscribe", function(event) {
+    // Available in 0.11.0 and above
+    event.preventDefault();
+    console.log( "podgepodgepodge" );
+
+    // // For example:
+    // console.log( this.page.url );
+    // console.log( this.page.inputPath );
+    // console.log( this.page.fileSlug );
+  });
+
+
   eleventyConfig.setQuietMode(true)
+
 
   pathPrefix: "/padraigobrien.com/"
   eleventyConfig.addPassthroughCopy('robots.txt')
@@ -106,6 +120,10 @@ module.exports = function(eleventyConfig) {
   })
 
   eleventyConfig.addPlugin(ErrorOverlay)
+
+  eleventyConfig.addPlugin(codeblocks([
+    charts,
+  ]))
   
   // --- START, eleventy-img
   function imageShortcode(src, alt, sizes="(min-width: 1024px) 100vw, 50vw") {
