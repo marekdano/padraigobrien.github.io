@@ -1,4 +1,5 @@
 module.exports = function (eleventyConfig) {
+  
   eleventyConfig.addJavaScriptFunction("subscribe", function() { alert("podge")});
   
   eleventyConfig.addShortcode("siteFooter", function (data) {
@@ -30,7 +31,7 @@ module.exports = function (eleventyConfig) {
                     type="email"
                     autoComplete="email"
                     required
-                    class="w-full px-5 py-3 border border-transparent placeholder-gray-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white sm:max-w-xs rounded-md"
+                    class="w-full px-5 py-3 border border-transparent text-black placeholder-gray-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white sm:max-w-xs rounded-md"
                     placeholder="Enter your email"
                   />
                   <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
