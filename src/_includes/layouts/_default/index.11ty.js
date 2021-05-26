@@ -12,15 +12,16 @@ exports.render = function (data) {
   const { length } = collections.post
 
   return /*html*/ `
-  <main class="p-0">
+  <main class="p-6">
     <div class="pt-6 lg:pt-12 lg:flex w-full mr-auto ml-auto">
-      <div class="bg-transparent lg:w-5/12 px-8 lg:pl-16 lg:pr-16 pt-0 lg:text-white text-center lg:text-right">
-        <h1 class="lg:leading-normal text-3xl lg:text-4xl 2xl:text-6xl lg:pt-16">Welcome</h1>
+      <div class="bg-transparent lg:w-5/12 px-8 lg:pl-16 lg:pr-16 pt-0 text-center lg:text-right dark:text-red">
+        <h1 class="lg:leading-normal lg:mt-0 mb-4 lg:mb-10 text-3xl lg:text-5xl 2xl:text-7xl lg:pt-16 dark:text-blue">Welcome</h1>
+        
         <p class="font-sans"> My opinions on technology and management.</p>
         <div class="font-sans">${content}</div>
       </div>
       <div class="text-center lg:text-left lg:w-7/12 lg:pl-16 lg:pt-16">
-        <div class="mt-8 border-blue-700 dark:border-white mx-auto my-auto w-3/5 border-solid border-b-4 lg:hidden"></div>
+        <div class="mt-8 border-blue-700 dark:border-white light:border-white mx-auto my-auto w-3/5 border-solid border-b-4 lg:hidden"></div>
         <h2 class="h1 mt-4 lg:mt-0 mb-4 lg:mb-10 text-3xl lg:text-5xl 2xl:text-7xl">Latest <a href="/posts/">posts</a></h2>
         ${
           collections.post.slice(-3).reverse().map(

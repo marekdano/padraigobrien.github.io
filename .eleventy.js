@@ -11,17 +11,6 @@ module.exports = function(eleventyConfig) {
   // theming -- based on Reuben Lillie's code (https://gitlab.com/reubenlillie/reubenlillie.com/)
   ofotigrid(eleventyConfig)
 
-  eleventyConfig.addJavaScriptFunction("subscribe", function(event) {
-    // Available in 0.11.0 and above
-    event.preventDefault();
-    console.log( "podgepodgepodge" );
-
-    // // For example:
-    // console.log( this.page.url );
-    // console.log( this.page.inputPath );
-    // console.log( this.page.fileSlug );
-  });
-
 
   eleventyConfig.setQuietMode(true)
 

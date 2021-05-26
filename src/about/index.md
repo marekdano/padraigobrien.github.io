@@ -5,7 +5,7 @@ title: "The About Me page"
 # to keep the "Other posts" box from appearing at the bottom of this page, since it uses 
 # the same layout as posts.
 subtitle: "Constantly experimenting with new ways to fail"
-description: "I like to have fun with techonlogy, mainly Javascript, starting on Rust. I aspire to run my own business, I have come to shy away from the venture capital way of creating and growing companies. I have failed a lot at all these things."
+description: "I like to have fun with techonlogy, mainly Javascript, I'm starting to learn Rust. I aspire to run my own business, I have come to shy away from the venture capital way of creating and growing companies. I have failed a lot at all the things I have mentioned already."
 author: Padraig O'Brien
 date: 2020-09-14T15:00:00
 lastmod: 2020-05-22T19:30:00

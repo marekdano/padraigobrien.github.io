@@ -11,6 +11,13 @@ module.exports = {
   },
   darkMode: 'media',
   theme: {
+    theme: {
+      extend: {
+        outline: {
+          black: '20px solid #0000ff',
+        }
+      }
+    },
     colors: {
       transparent: 'transparent',
       white: '#ffffff',
