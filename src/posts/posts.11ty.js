@@ -46,7 +46,11 @@ exports.render = function (data) {
       ${pagerThing}
       <hr class="mt-2 mb-6" />
       ${
-        items.map(
+        items
+        .filter(post => 
+          !post.data.draft
+       )
+       .map(
           ({url,
             date,
             data: {

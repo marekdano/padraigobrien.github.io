@@ -9,7 +9,7 @@ exports.render = function (data) {
   // https://stackoverflow.com/questions/65565806/destructure-object-properties-inside-array-prototype-map
 
   const { content, collections } = data
-  const { length } = collections.post
+  const length = collections.post.filter(post => !post.data.draft).length
 
   return /*html*/ `
   <main class="p-6">
@@ -24,7 +24,11 @@ exports.render = function (data) {
         <div class="mt-8 border-blue-700 dark:border-white light:border-white mx-auto my-auto w-3/5 border-solid border-b-4 lg:hidden"></div>
         <h2 class="h1 mt-4 lg:mt-0 mb-4 lg:mb-10 text-3xl lg:text-5xl 2xl:text-7xl">Latest <a href="/posts/">posts</a></h2>
         ${
-          collections.post.slice(-3).reverse().map(
+          collections.post
+          .filter(post => 
+             !post.data.draft
+          )
+          .slice(-3).reverse().map(
             ({url,
               date,
               data: {
