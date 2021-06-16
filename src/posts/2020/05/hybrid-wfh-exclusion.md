@@ -76,5 +76,6 @@ People felt more included and became more vocal and engaged in the problems we w
 We learned from having a hybrid workforce that it is best to have one process for everyone, and that process optimises for remote people.
 When doing meetings, office-based people should do them at your desk.
 Invest in good headsets for each employee, QC35 were good, Jabra headsets are also good. 
-Improving video is not so important as most laptops have good built-in  camera's
+Improving video is not so important as most laptops have good built-in  camera's.
+
 Stay away from using meeting rooms with a big tv and starfish phones. It can lead to excluding the remote people due to the dynamics mentioned above.
