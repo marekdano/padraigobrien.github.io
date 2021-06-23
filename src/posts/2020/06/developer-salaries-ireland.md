@@ -2,7 +2,7 @@
 layout: singlepost
 tags: post
 title: "What are your salary expectations?"
-subtitle: "Aggregate salary data of developer in Dublin, Ireland"
+subtitle: "Aggregate salary data of developers in Dublin, Ireland"
 description: "I have done over 1000 interviews in the last few years. Here is the answer to the question of what are your salary expectations?" # Quotation marks allow colons, semicolons, etc.
 author: Padraig O'Brien
 date: 2021-06-23T21:30:00 # This would be 9:30 PM (2130) UTC on February 28, 2020
