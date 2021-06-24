@@ -66,3 +66,7 @@ All buckets command pretty much the same salaries over the years, but I see DevO
 | Assoicate Engineer | 2-4      |    50,000-85,000 |
 | Graduate Engineer | 2-4      |    35,000-50,000|
 
+
+# Summary and 2021
+Salaries from 2018 to 2020 have steadily been climbing. I have not performed as many Interviews in 2021. Still, from observations from conversations with engineers looking and hiring managers, The salary expectations are moving higher and faster than in previous years. One recruiter friend told me he had not seen the market so hot in over 20 years. Many hiring manager colleagues have also stated they are seeing fewer applicants than in previous years.
+One thing for sure, it is an excellent time to be a software engineer.
