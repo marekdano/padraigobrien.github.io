@@ -6,7 +6,7 @@ subtitle: "Aggregate salary data of developers in Dublin, Ireland"
 description: "I have done over 1000 interviews in the last few years. Here is the answer to the question of what are your salary expectations?" # Quotation marks allow colons, semicolons, etc.
 author: Padraig O'Brien
 date: 2021-06-23T21:30:00 # This would be 9:30 PM (2130) UTC on February 28, 2020
-lastmod: 2020-23-16T21:30:00 # Comment-out this line with a # if content is unchanged
+lastmod: 2020-06-23T21:30:00 # Comment-out this line with a # if content is unchanged
 draft: false # Make it "true" if you don't want Hugo to "publish" yet
 featured_image: globe-life-park-rangers-1402096_6000x4000.jpg # Or whatever image you want to use
 featured_image_alt: "Baseball game at Globe Life Park, Arlington, Texas" # Always include an ALT tag for accessibility --  Quotation marks allow colons, semicolons, etc.
