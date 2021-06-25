@@ -63,7 +63,7 @@ All buckets command pretty much the same salaries over the years, but I see DevO
 | Principle engineer     | 8+ | 140,000+ |
 | Senior  engineer     | 5-8      |  100,000-140,000 |
 | Engineer | 4-5     |  85,000-100,000 |#
-| Assoicate Engineer | 2-4      |    50,000-85,000 |
+| Associate Engineer | 2-4      |    50,000-85,000 |
 | Graduate Engineer | 2-4      |    35,000-50,000|
 
 
